@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+/>
     <style>
         .done{
             text-decoration: line-through;
@@ -10,6 +17,13 @@
         }
         li{
             font-size: 3rem;
+            padding: 1rem;
+        
+            i{
+                text-align: right;
+                padding-left: 4rem;
+                cursor: pointer;
+            }
         }
     </style>
     <title>Todo List - VueJS</title>
@@ -18,7 +32,9 @@
     
     <div id="app">
         <ul>
-            <li v-for="todo in toDoList" :class="{ 'done' : todo.done }">{{todo.text}}</li>
+            <li v-for="(todo, index) in toDoList" :class="{ 'done' : todo.done }">{{todo.text}}
+                <i class="fa-solid fa-xmark" @click="removeToDo(index)"></i>
+            </li>
         </ul>
     </div>
 
@@ -26,3 +42,4 @@
     <script src="./assets/js/app.js"></script>
 </body>
 </html>
+

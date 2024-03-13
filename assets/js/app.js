@@ -32,5 +32,11 @@ createApp({
         text: toDoList.text,
         done: true
     }
+  },
+  methods: {
+    removeToDo(toDoID){
+        this.toDoList.splice(toDoID, 1)
+    }
   }
+  
 }).mount('#app')
