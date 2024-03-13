@@ -11,26 +11,60 @@
     referrerpolicy="no-referrer"
 />
     <style>
+        body{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
         .done{
             text-decoration: line-through;
             color: palevioletred;
         }
-        li{
-            font-size: 3rem;
-            padding: 1rem;
-        
-            i{
-                text-align: right;
-                padding-left: 4rem;
-                cursor: pointer;
+
+        ul{
+            margin-left: 5rem;
+            li{
+                font-size: 2rem;
+                padding: 1rem;
+                text-transform: uppercase;
+                
+                i{
+                    text-align: right;
+                    padding-left: 4rem;
+                    cursor: pointer;
+                }
             }
         }
+        input{
+            font-size: 2.5rem;
+            border-radius: 10px;
+            margin: 2rem 0 3rem 5rem;
+            padding: 1rem;
+        }
+        button{
+            width: 150px;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background-color: transparent;
+            border: none;
+            width: fit-content;
+            padding: 0 2rem;
+            vertical-align: sub;
+        }
+        small{
+            color: red
+        }
+
     </style>
     <title>Todo List - VueJS</title>
 </head>
 <body>
     
     <div id="app">
+
+        <input type="text" placeholder="What's your new task?" v-model="newToDo" @keyup.enter="addToDo()">
+
+        <button type="submit" @click="addToDo()"><i class="fa fa-circle-arrow-down"></i></button>
+
+
         <ul>
             <li v-for="(todo, index) in toDoList" :class="{ 'done' : todo.done }">{{todo.text}}
                 <i class="fa-solid fa-xmark" @click="removeToDo(index)"></i>

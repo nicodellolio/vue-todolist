@@ -26,17 +26,30 @@ const toDoList = [
 ]
 
 createApp({
-  data() {
-    return {
-        toDoList: toDoList,
-        text: toDoList.text,
-        done: true
+    data() {
+        return {
+            toDoList: toDoList,
+            text: toDoList.text,
+            done: true,
+            newToDo: '',
+        }
+    },
+    methods: {
+        removeToDo(toDoID) {
+            this.toDoList.splice(toDoID, 1)
+        },
+        addToDo() {
+            const newObj = {text: this.newToDo, done: false}
+
+
+            if (this.newToDo.length > 0) {
+                console.log('new task');
+                console.log(this.newToDo);
+                
+                this.toDoList.unshift(newObj)
+                this.newToDo = ''
+            }
+
+        }
     }
-  },
-  methods: {
-    removeToDo(toDoID){
-        this.toDoList.splice(toDoID, 1)
-    }
-  }
-  
 }).mount('#app')
