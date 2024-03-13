@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .done{
+            text-decoration: line-through;
+            color: palevioletred;
+        }
+        li{
+            font-size: 3rem;
+        }
+    </style>
     <title>Todo List - VueJS</title>
 </head>
 <body>
     
     <div id="app">
-        
+        <ul>
+            <li v-for="todo in toDoList" :class="{ 'done' : todo.done }">{{todo.text}}</li>
+        </ul>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
